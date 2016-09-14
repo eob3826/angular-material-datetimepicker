@@ -34,19 +34,16 @@ md-dialog.dtp {
 }
 
 .dtp > .dtp-content {
-    max-width: 300px;
-    max-height: 500px;
+    padding: 0;
 }
 
 .dtp > .dtp-content > .dtp-date-view > header.dtp-header {
-    background: #689F38;
     color: #fff;
     text-align: center;
     padding: 3px;
 }
 
 .dtp div.dtp-date, .dtp div.dtp-time {
-    background: #8BC34A;
     text-align: center;
     color: #fff;
     padding: 10px;
@@ -73,14 +70,12 @@ md-dialog.dtp {
 
 .dtp div.dtp-actual-year {
     font-size: 1.6em;
-    color: #DCEDC8;
 }
 
 .dtp div.dtp-year-btn {
     font-size: 1.4em;
     line-height: 30px;
     cursor: pointer;
-    color: #DCEDC8;
 }
 
 .dtp div.dtp-year-btn-prev {
@@ -93,7 +88,6 @@ md-dialog.dtp {
 }
 
 .dtp div.dtp-picker {
-    padding: 10px;
     text-align: center;
 }
 
@@ -153,7 +147,6 @@ md-dialog.dtp {
 }
 
 .dtp table.dtp-picker-days tr > td > a.selected {
-    background: #8BC34A;
     color: #fff;
 }
 
@@ -206,7 +199,6 @@ md-dialog.dtp {
 }
 
 .dtp .dtp-actual-meridien a.selected {
-    background: #689F38;
     color: #fff;
 }
 
@@ -227,7 +219,6 @@ md-dialog.dtp {
 }
 
 .dtp .dtp-picker-time > a.dtp-select-hour.selected {
-    background: #689F38;
     color: #fff;
 }
 
@@ -236,7 +227,6 @@ md-dialog.dtp {
 }
 
 .dtp .dtp-picker-time > a.dtp-select-minute.selected {
-    background: #8BC34A;
     color: #fff;
 }
 
@@ -278,11 +268,9 @@ md-dialog.dtp {
 }
 
 .dtp .dtp-hand.on {
-    background: #8BC34A;
 }
 
 .dtp .dtp-buttons {
-    padding: 0 10px 10px 10px;
     text-align: right;
 }
 
