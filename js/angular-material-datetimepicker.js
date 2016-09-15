@@ -46,11 +46,11 @@
     + '                <div class="dtp-picker-datetime" ng-show="picker.currentView !== picker.VIEWS.DATE">'
     + '                    <div class="dtp-actual-meridien">'
     + '                        <div class="left p20">'
-    + '                            <a href="#" mdc-dtp-noclick class="dtp-meridien-am" ng-class="picker.meridien == \'AM\' ? \'selected md-accent-bg\' : \'\'" ng-click="picker.selectAM()">{{picker.params.amText}}</a>'
+    + '                            <a href="#" mdc-dtp-noclick class="dtp-meridien-am" ng-class="picker.meridien == \'AM\' ? \'font-weight-600\' : \'font-weight-100\'" ng-click="picker.selectAM()">{{picker.params.amText}}</a>'
     + '                        </div>'
     + '                        <div ng-show="!picker.timeMode" class="dtp-actual-time p60">{{picker.currentNearest5Minute().format(picker.params.shortTime ? "hh:mm" : "HH:mm")}}</div>'
     + '                        <div class="right p20">'
-    + '                            <a href="#" mdc-dtp-noclick class="dtp-meridien-pm" ng-class="picker.meridien == \'PM\' ? \'selected md-accent-bg\' : \'\'" ng-click="picker.selectPM()">{{picker.params.pmText}}</a>'
+    + '                            <a href="#" mdc-dtp-noclick class="dtp-meridien-pm" ng-class="picker.meridien == \'PM\' ? \'font-weight-600\' : \'font-weight-100\'" ng-click="picker.selectPM()">{{picker.params.pmText}}</a>'
     + '                        </div>'
     + '                        <div class="clearfix"></div>'
     + '                    </div>'
@@ -60,9 +60,9 @@
     + '            </div>'
     + '        </div>'
     + '    </md-dialog-content>'
-    + '    <md-dialog-actions class="dtp-buttons">'
-    + '            <md-button class="dtp-btn-cancel md-button" ng-click="picker.cancel()"> {{picker.params.cancelText}}</md-button>'
-    + '            <md-button class="dtp-btn-ok md-button md-accent-bg" ng-click="picker.ok()"> {{picker.params.okText}}</md-button>'
+    + '    <md-dialog-actions class="dtp-buttons" layout-align="center center">'
+    + '            <md-button class="dtp-btn-cancel md-button md-accent" ng-click="picker.cancel()"> {{picker.params.cancelText}}</md-button>'
+    + '            <md-button class="dtp-btn-ok md-button md-primary" ng-click="picker.ok()"> {{picker.params.okText}}</md-button>'
     + '      </md-dialog-actions>'
     + '</md-dialog>';
 
@@ -708,7 +708,7 @@
 
         var template = '<div class="dtp-picker-clock"><span ng-if="!points || points.length < 1">&nbsp;</span>'
           + '<div ng-repeat="point in points" class="dtp-picker-time" ng-style="point.style">'
-          + '   <a href="#" mdc-dtp-noclick ng-class="point.value===currentValue ? 'selected md-accent-bg' : ''" class="dtp-select-hour" ng-click="setTime(point.value)" ng-if="pointAvailable(point)">{{point.display}}</a>'
+          + '   <a href="#" mdc-dtp-noclick ng-class="point.value===currentValue ? \'selected md-accent-bg\' : \'\'" class="dtp-select-hour" ng-click="setTime(point.value)" ng-if="pointAvailable(point)">{{point.display}}</a>'
           + '   <a href="#" mdc-dtp-noclick class="disabled dtp-select-hour" ng-if="!pointAvailable(point)">{{point.display}}</a>'
           + '</div>'
           + '<div class="dtp-hand dtp-hour-hand"></div>'
@@ -731,16 +731,16 @@
               var w = componentRoot.querySelector('.dtp-content').offsetWidth;
               var pl = parseInt(css(pickerEl, 'paddingLeft').replace('px', '')) || 0;
               var pr = parseInt(css(pickerEl, 'paddingRight').replace('px', '')) || 0;
-              var ml = parseInt(css(clock, 'marginLeft').replace('px', '')) || 0;
-              var mr = parseInt(css(clock, 'marginRight').replace('px', '')) || 0;
+              var ml = 5 + parseInt(css(clock, 'marginLeft').replace('px', '')) || 0;
+              var mr = 5 + parseInt(css(clock, 'marginRight').replace('px', '')) || 0;
               //set width
               var clockWidth = (w - (ml + mr + pl + pr));
               clock.css('width', (clockWidth) + 'px');
 
               var pL = parseInt(css(pickerEl, 'paddingLeft').replace('px', '')) || 0;
               var pT = parseInt(css(pickerEl, 'paddingTop').replace('px', '')) || 0;
-              var mL = parseInt(css(clock, 'marginLeft').replace('px', '')) || 0;
-              var mT = parseInt(css(clock, 'marginTop').replace('px', '')) || 0;
+              var mL = 5 + parseInt(css(clock, 'marginLeft').replace('px', '')) || 0;
+              var mT = 5 + parseInt(css(clock, 'marginTop').replace('px', '')) || 0;
 
               var r = (clockWidth / 2);
               var j = r / 1.2; //???
@@ -776,6 +776,7 @@
               scope.points = points;
               setCurrentValue();
               clock.css('height', clockWidth + 'px');
+              clock.css('margin', '10px auto');
               //picker.initHands(true);
 
               var clockCenter = element[0].querySelector('.dtp-clock-center');
@@ -785,20 +786,20 @@
               var _mL = r / 1.5;
 
               angular.element(element[0].querySelector('.dtp-hour-hand')).css({
-                left: r + (mL * 1.5) + 'px',
-                height: _hL + 'px',
+                left: -15 + r + (mL * 1.5) + 'px',
+                height: -10 + _hL + 'px',
                 marginTop: (r - _hL - pL) + 'px'
               }).addClass(!minuteMode ? 'md-accent-bg' : '');
 
               angular.element(element[0].querySelector('.dtp-minute-hand')).css
               ({
-                left: r + (mL * 1.5) + 'px',
-                height: _mL + 'px',
+                left: -15 + r + (mL * 1.5) + 'px',
+                height: -10 + _mL + 'px',
                 marginTop: (r - _mL - pL) + 'px'
               }).addClass(minuteMode ? 'md-accent-bg' : '');
 
               angular.element(clockCenter).css({
-                left: (r + pL + mL - centerWidth) + 'px',
+                left: -3 + (r + pL + mL - centerWidth) + 'px',
                 marginTop: (r - (mL / 2)) - centerHeight + 'px'
               });
               animateHands();
